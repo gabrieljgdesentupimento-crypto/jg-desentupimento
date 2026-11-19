@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JG Desentupimento | Desentupimento e Serviços de Canalização 24 Horas — Algarve</title>
+<meta name="description" content="Desentupimento, serviços de canalização, deteção de fugas e inspeção por câmara. Atendimento 24 horas, 7 dias por semana, em toda a Região do Algarve.">
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link rel="icon" href="assets/img/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="assets/img/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .gallery-photo-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .gallery-photo-link img {
+    transition: transform 0.35s ease;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gallery-photo-link:hover img {
+    transform: scale(1.05);
+  }
+  .service-detail-alt {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+  .service-detail-alt .h2,
+  .service-detail-alt h2 {
+    color: #0f172a;
+  }
+  .service-detail-alt p,
+  .service-detail-alt .camera-features li {
+    color: #334155;
+  }
+  .service-detail-alt .container {
+    flex-direction: row-reverse;
+  }
+  @media (max-width: 900px) {
+    .service-detail-alt .container {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="container">
+    <a href="#inicio" class="logo">
+      <img src="assets/img/logo.png" alt="JG Desentupimento" class="logo-img">
+    </a>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#inicio" class="is-active">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#sobre">Sobre a JG</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20da%20JG%20Desentupimento." class="btn btn-whatsapp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 0 0 3.5 17.5L2 22l4.6-1.5A9 9 0 1 0 17.6 6.3zM12 20a7.1 7.1 0 0 1-3.6-1l-.3-.2-2.7.9.9-2.6-.2-.3A7.1 7.1 0 1 1 12 20zm3.9-5.3c-.2-.1-1.3-.6-1.5-.7s-.3-.1-.5.1-.6.7-.8.9-.3.2-.5.1a5.8 5.8 0 0 1-1.7-1 6.4 6.4 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4.2-.3v-.3c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5a3.2 3.2 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <button class="nav-toggle js-nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="mobile-nav js-mobile-nav">
+  <div class="mobile-nav-backdrop js-nav-backdrop"></div>
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-header">
+      <span class="logo">
+        <img src="assets/img/logo.png" alt="JG Desentupimento" class="logo-img">
+      </span>
+      <button class="nav-toggle js-nav-close" aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <ul>
+      <li><a href="#inicio" class="js-nav-link">Início</a></li>
+      <li><a href="#servicos" class="js-nav-link">Serviços</a></li>
+      <li><a href="#como-funciona" class="js-nav-link">Como Funciona</a></li>
+      <li><a href="#sobre" class="js-nav-link">Sobre a JG</a></li>
+      <li><a href="#faq" class="js-nav-link">FAQ</a></li>
+      <li><a href="#contacto" class="js-nav-link">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20da%20JG%20Desentupimento." class="btn btn-whatsapp btn-block" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 0 0 3.5 17.5L2 22l4.6-1.5A9 9 0 1 0 17.6 6.3zM12 20a7.1 7.1 0 0 1-3.6-1l-.3-.2-2.7.9.9-2.6-.2-.3A7.1 7.1 0 1 1 12 20zm3.9-5.3c-.2-.1-1.3-.6-1.5-.7s-.3-.1-.5.1-.6.7-.8.9-.3.2-.5.1a5.8 5.8 0 0 1-1.7-1 6.4 6.4 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4.2-.3v-.3c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5a3.2 3.2 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3z"/></svg>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</div>
+
+<main id="inicio">
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="h1">Desentupimento e serviços canalização com atendimento profissional</h1>
+        <p>Desentupimento, reparações de tubagens, identificação de fugas de água e inspeção de tubagens por câmara. Soluções rápidas, eficientes e com equipamentos profissionais.</p>
+
+        <div class="hero-benefits">
+          <div class="hero-benefit">
+            <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <span>Atendimento<br>24 horas</span>
+          </div>
+          <div class="hero-benefit">
+            <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 7.5-7 9-4-1.5-7-4.6-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span>Equipamentos<br>profissionais</span>
+          </div>
+          <div class="hero-benefit">
+            <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></span>
+            <span>Equipa<br>especializada</span>
+          </div>
+          <div class="hero-benefit">
+            <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg></span>
+            <span>Atendemos toda a<br>Região do Algarve</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20da%20JG%20Desentupimento." class="btn btn-whatsapp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 0 0 3.5 17.5L2 22l4.6-1.5A9 9 0 1 0 17.6 6.3zM12 20a7.1 7.1 0 0 1-3.6-1l-.3-.2-2.7.9.9-2.6-.2-.3A7.1 7.1 0 1 1 12 20zm3.9-5.3c-.2-.1-1.3-.6-1.5-.7s-.3-.1-.5.1-.6.7-.8.9-.3.2-.5.1a5.8 5.8 0 0 1-1.7-1 6.4 6.4 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4.2-.3v-.3c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5a3.2 3.2 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3z"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <a href="tel:+351925279486" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2.2z"/></svg>
+            Ligar Agora (925 279 486)
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="badge-24h">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <strong>ATENDIMENTO<br>24 HORAS</strong>
+      <small>7 DIAS POR SEMANA</small>
+    </div>
+  </section>
+
+  <!-- ============================== SERVIÇOS ============================== -->
+  <section id="servicos" class="services-section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">NOSSOS SERVIÇOS</span>
+        <h2 class="section-title">Soluções completas para problemas de canalização</h2>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <span class="card-index">01</span>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V7a5 5 0 0 1 10 0v1"/><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 15v3"/></svg>
+          </span>
+          <h3>Desentupimento</h3>
+          <p>Desentupimos sanitas, lavatórios, ralos, tanques, cozinhas, casas de banho, redes de esgoto e tubagens em geral.</p>
+          <a href="#servico-sanita" class="card-link">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+
+        <article class="service-card">
+          <span class="card-index">02</span>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2-2 2.7-2.7z"/></svg>
+          </span>
+          <h3>Serviços de Canalização</h3>
+          <p>Reparações e manutenção de canalizações, válvulas, ligações, tubagens e instalações.</p>
+          <a href="#servico-canalizacao" class="card-link">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+
+        <article class="service-card">
+          <span class="card-index">03</span>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>
+          </span>
+          <h3>Deteção de Fugas de Água</h3>
+          <p>Identificamos fugas de água visíveis ou ocultas com equipamentos adequados, sem quebrar desnecessariamente.</p>
+          <a href="#servico-fugas" class="card-link">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+
+        <article class="service-card">
+          <span class="card-index">04</span>
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="14" height="10" rx="2"/><path d="M16 10l5-2.5v9L16 14"/></svg>
+          </span>
+          <h3>Inspeção por Câmara</h3>
+          <p>Inspeção interna de tubagens com câmara de vídeo para identificar obstruções e outros problemas.</p>
+          <a href="#servico-camera" class="card-link">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PROBLEMAS (GALERIA CLICÁVEL SEM BOTÕES) ============================== -->
+  <section class="problems-section">
+    <div class="container">
+      <div class="problems-text">
+        <h2 class="h2">Está a enfrentar algum destes problemas?</h2>
+        <ul class="problems-list">
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Água a voltar pelo ralo ou pela sanita</li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Mau cheiro vindo da tubagem</li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Fuga de água que não consegue localizar</li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Conta da água a aumentar sem explicação</li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Problemas recorrentes na canalização</li>
+        </ul>
+        <p>Clique em qualquer uma das imagens ao lado para ver detalhes do serviço e pedir assistência imediata.</p>
+        <a href="#contacto" class="btn btn-navy">Falar com a JG</a>
+      </div>
+
+      <div class="problems-gallery">
+        <a href="#servico-canalizacao" class="gallery-photo gallery-photo-link" title="Serviços de Canalização e Reparação de Torneiras">
+          <img src="assets/img/Duxe.jpg" alt="Técnico a reparar torneira e canalização" loading="lazy">
+        </a>
+
+        <a href="#servico-sanita" class="gallery-photo gallery-photo-link" title="Desentupimento de Sanitas e Ramais">
+          <img src="assets/img/Sanita.jpg" alt="Desentupimento de sanita" loading="lazy">
+        </a>
+
+        <a href="#servico-cozinha" class="gallery-photo gallery-photo-link" title="Desentupimento de Cozinhas e Sifões">
+          <img src="assets/img/Cozinha.jpg" alt="Desentupimento de tubagem na cozinha" loading="lazy">
+        </a>
+
+        <a href="#servico-fugas" class="gallery-photo gallery-photo-link" title="Deteção de Fugas de Água">
+          <img src="assets/img/Fuga D'agua.jpg" alt="Deteção de fuga de água" loading="lazy">
+        </a>
+
+        <a href="#servico-caixas" class="gallery-photo gallery-photo-link" title="Caixas de Esgoto e Alta Pressão">
+          <img src="assets/img/Caixa.jpg" alt="Equipamento e desentupimento de caixa de esgoto" loading="lazy">
+        </a>
+
+        <a href="#servico-camera" class="gallery-photo gallery-photo-link" title="Inspeção por Câmara">
+          <img src="assets/img/Camera de video.jpg" alt="Inspeção por câmara de vídeo" loading="lazy">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== POR QUE ESCOLHER ============================== -->
+  <section id="sobre" class="bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Por que escolher a JG Desentupimento?</h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <h3>Atendimento 24 Horas</h3>
+          <p>Estamos disponíveis 24 horas por dia, todos os dias da semana.</p>
+        </div>
+        <div class="why-item">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 7.5-7 9-4-1.5-7-4.6-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h3>Equipamentos Profissionais</h3>
+          <p>Utilizamos equipamentos modernos para garantir resultados eficientes.</p>
+        </div>
+        <div class="why-item">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></span>
+          <h3>Equipa Qualificada</h3>
+          <p>Profissionais experientes e treinados para resolver o seu problema.</p>
+        </div>
+        <div class="why-item">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11l5-7 5 7M7 11l-3 8h16l-3-8M7 11h10"/></svg></span>
+          <h3>Atendimento Rápido</h3>
+          <p>Chegamos até si com agilidade para minimizar transtornos.</p>
+        </div>
+        <div class="why-item">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span>
+          <h3>Soluções Eficientes</h3>
+          <p>Identificamos a causa e oferecemos a melhor solução.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== COMO FUNCIONA ============================== -->
+  <section id="como-funciona" class="how-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Como funciona o nosso atendimento</h2>
+      </div>
+
+      <div class="how-grid">
+        <div class="how-step-wrap">
+          <div class="how-step">
+            <div class="step-top">
+              <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2.2z"/></svg></span>
+              <span class="step-number">01</span>
+            </div>
+            <h3>Contacto</h3>
+            <p>Entre em contacto pelo WhatsApp ou telefone.</p>
+          </div>
+          <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+
+        <div class="how-step-wrap">
+          <div class="how-step">
+            <div class="step-top">
+              <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+              <span class="step-number">02</span>
+            </div>
+            <h3>Avaliação</h3>
+            <p>Entendemos o problema e identificamos a melhor abordagem.</p>
+          </div>
+          <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+
+        <div class="how-step-wrap">
+          <div class="how-step">
+            <div class="step-top">
+              <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></span>
+              <span class="step-number">03</span>
+            </div>
+            <h3>Atendimento</h3>
+            <p>A nossa equipa vai até si com os equipamentos necessários.</p>
+          </div>
+          <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+
+        <div class="how-step-wrap">
+          <div class="how-step">
+            <div class="step-top">
+              <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2-2 2.7-2.7z"/></svg></span>
+              <span class="step-number">04</span>
+            </div>
+            <h3>Solução</h3>
+            <p>Executamos o serviço com eficiência e segurança.</p>
+          </div>
+          <div class="how-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+
+        <div class="how-step-wrap">
+          <div class="how-step">
+            <div class="step-top">
+              <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span>
+              <span class="step-number">05</span>
+            </div>
+            <h3>Problema Resolvido</h3>
+            <p>Fica com a tranquilidade de ter o problema resolvido.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== DETALHES DOS SERVIÇOS (SCRIPTS) ============================== -->
+
+  <!-- 1. Serviços de Canalização e Reparação de Torneiras -->
+  <section id="servico-canalizacao" class="camera-section">
+    <div class="container">
+      <div class="camera-media">
+        <div class="gallery-photo">
+          <img src="assets/img/Duxe.jpg" alt="Técnico da JG Desentupimento a reparar e instalar torneira" loading="lazy">
+        </div>
+      </div>
+      <div class="camera-text">
+        <span class="eyebrow">SERVIÇO ESPECIALIZADO</span>
+        <h2 class="h2">Serviços de Canalização e Reparações</h2>
+        <p>Realizamos reparação, substituição e montagem de torneiras, misturadoras, válvulas, sifões, ligações flexíveis e tubagens em cozinhas e casas de banho, garantindo vedação segura e sem fugas.</p>
+        <ul class="camera-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Troca e reparação de torneiras de cozinha, lavatório e duche</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Substituição de válvulas, bichas flexíveis, sifões e ligações</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Acabamento limpo, teste de pressão e garantia de estanquidade</li>
+        </ul>
+        <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20de%20canaliza%C3%A7%C3%A3o%20%2F%20repara%C3%A7%C3%A3o%20de%20torneira." class="btn btn-whatsapp" target="_blank" rel="noopener">Pedir Assistência no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Desentupimento de Sanitas -->
+  <section id="servico-sanita" class="camera-section service-detail-alt">
+    <div class="container">
+      <div class="camera-media">
+        <div class="gallery-photo">
+          <img src="assets/img/Sanita.jpg" alt="Técnico a desentupir tubo de sanita no chão com máquina profissional" loading="lazy">
+        </div>
+      </div>
+      <div class="camera-text">
+        <span class="eyebrow">SERVIÇO ESPECIALIZADO</span>
+        <h2 class="h2">Desentupimento de Sanitas e Ramais</h2>
+        <p>Atuamos de forma rápida e higiénica em sanitas entupidas e colunas de descarga, utilizando máquinas profissionais de alta potência que desfazem bloqueios difíceis diretamente na tubagem.</p>
+        <ul class="camera-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Acesso direto à tubagem de esgoto sem riscar ou partir a louça</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Remoção completa de objetos, toalhitas e obstruções sólidas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Piquete de urgência 24 horas para emergências domésticas</li>
+        </ul>
+        <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20desentupir%20uma%20sanita%20com%20urg%C3%AAncia." class="btn btn-whatsapp" target="_blank" rel="noopener">Pedir Assistência no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Bancas e Cozinhas -->
+  <section id="servico-cozinha" class="camera-section">
+    <div class="container">
+      <div class="camera-media">
+        <div class="gallery-photo">
+          <img src="assets/img/Cozinha.jpg" alt="Técnico a desentupir sifão e tubagem de banca de cozinha" loading="lazy">
+        </div>
+      </div>
+      <div class="camera-text">
+        <span class="eyebrow">SERVIÇO ESPECIALIZADO</span>
+        <h2 class="h2">Desentupimento de Cozinhas e Sifões</h2>
+        <p>Resolvemos entupimentos em lava-loiças, sifões, máquinas de lavar loiça e roupa, desobstruindo a gordura solidificada e os restos alimentares acumulados nas paredes dos canos.</p>
+        <ul class="camera-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Limpeza mecânica eficaz contra placas de gordura endurecida</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sem recurso a produtos químicos corrosivos que danificam os tubos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Verificação de estanquidade e funcionamento dos sifões</li>
+        </ul>
+        <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20desentupir%20a%20banca%20da%20cozinha." class="btn btn-whatsapp" target="_blank" rel="noopener">Pedir Assistência no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Deteção de Fugas de Água -->
+  <section id="servico-fugas" class="camera-section service-detail-alt">
+    <div class="container">
+      <div class="camera-media">
+        <div class="gallery-photo">
+          <img src="assets/img/Fuga D'agua.jpg" alt="Técnico a utilizar geofone acústico para deteção de fugas de água" loading="lazy">
+        </div>
+      </div>
+      <div class="camera-text">
+        <span class="eyebrow">SERVIÇO ESPECIALIZADO</span>
+        <h2 class="h2">Deteção de Fugas de Água</h2>
+        <p>Localizamos com exatidão roturas e fugas de água ocultas em paredes, pavimentos e exteriores através de tecnologia acústica (geofone) e equipamentos de precisão, evitando obras e custos desnecessários.</p>
+        <ul class="camera-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Localização não destrutiva sem partir o chão ou paredes à procura</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Ideal para resolver infiltrações, humidades e faturas de água elevadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Diagnóstico rápido em moradias, apartamentos, piscinas e jardins</li>
+        </ul>
+        <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20localizar%20uma%20fuga%20de%20%C3%A1gua." class="btn btn-whatsapp" target="_blank" rel="noopener">Pedir Assistência no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Caixas de Esgoto e Alta Pressão -->
+  <section id="servico-caixas" class="camera-section">
+    <div class="container">
+      <div class="camera-media">
+        <div class="gallery-photo">
+          <img src="assets/img/Caixa.jpg" alt="Equipa e carrinha JG Desentupimento com sistema de alta pressão" loading="lazy">
+        </div>
+      </div>
+      <div class="camera-text">
+        <span class="eyebrow">SERVIÇO ESPECIALIZADO</span>
+        <h2 class="h2">Caixas de Esgoto e Alta Pressão</h2>
+        <p>Dispomos de carrinhas equipadas com sistemas hidrodinâmicos de alta pressão para desentupir e lavar caixas de visita, coletores principais, condutas de prédios, restaurantes e condomínios.</p>
+        <ul class="camera-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Jato de água de alta pressão que limpa e desincrusta toda a tubagem</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Remoção eficaz de lamas, areias, raízes e gorduras acumuladas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Manutenção preventiva e corretiva para habitações e empresas</li>
+        </ul>
+        <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20desentupimento%20em%20caixa%20de%20esgoto%20%2F%20alta%20press%C3%A3o." class="btn btn-whatsapp" target="_blank" rel="noopener">Pedir Assistência no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Inspeção por Câmara -->
+  <section id="servico-camera" class="camera-section service-detail-alt">
+    <div class="container">
+      <div class="camera-media">
+        <div class="gallery-photo">
+          <img src="assets/img/Camera de video.jpg" alt="Técnico a operar equipamento de inspeção por câmara de vídeo" loading="lazy">
+        </div>
+      </div>
+      <div class="camera-text">
+        <span class="eyebrow">SERVIÇO ESPECIALIZADO</span>
+        <h2 class="h2">Inspeção por Câmara</h2>
+        <p>Utilizamos câmaras de vídeo de alta precisão para inspecionar o interior das tubagens, identificando obstruções, fissuras, raízes e outras causas de problemas sem necessidade de obras invasivas.</p>
+        <ul class="camera-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Diagnóstico preciso sem quebrar paredes ou pavimentos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Identificação exata do ponto do problema</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Relatório visual do estado da tubagem</li>
+        </ul>
+        <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Inspe%C3%A7%C3%A3o%20por%20C%C3%A2mara." class="btn btn-whatsapp" target="_blank" rel="noopener">Saiba Mais no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== DEPOIMENTOS ============================== -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">O que os nossos clientes dizem</h2>
+      </div>
+
+      <div class="testimonials-empty">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+        <div>
+          <h3>Depoimentos serão inseridos aqui</h3>
+          <p>Assim que tivermos avaliações autorizadas pelos nossos clientes, elas serão publicadas nesta secção.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FAQ ============================== -->
+  <section id="faq" class="bg-gray">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">DÚVIDAS FREQUENTES</span>
+        <h2 class="section-title">Perguntas Frequentes</h2>
+      </div>
+
+      <div class="faq-list js-faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            Qual é a área de atendimento da JG Desentupimento?
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Atendemos toda a Região do Algarve, 24 horas por dia, 7 dias por semana.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            O atendimento funciona mesmo à noite e aos fins de semana?
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Sim. O nosso atendimento é 24 horas, todos os dias, incluindo feriados e fins de semana, para emergências de canalização.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Como funciona a inspeção por câmara?
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Introduzimos uma câmara de vídeo na tubagem para localizar com precisão obstruções, fissuras ou outras causas do problema, sem necessidade de obras.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            É necessário quebrar paredes ou pavimentos para localizar fugas de água?
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Na maioria dos casos não. Utilizamos equipamentos de deteção que permitem localizar a fuga sem quebrar desnecessariamente.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Quanto tempo demora o atendimento?
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">O tempo varia conforme a sua localização na Região do Algarve, mas priorizamos sempre a rapidez, especialmente em casos de urgência.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CTA FINAL ============================== -->
+  <section id="contacto" class="cta-final">
+    <div class="container">
+      <div>
+        <h2>Precisa de ajuda agora?</h2>
+        <p>Atendimento 24 horas na Região do Algarve. Fale connosco!</p>
+      </div>
+      <div class="cta-final-actions">
+        <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20da%20JG%20Desentupimento." class="btn btn-whatsapp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 0 0 3.5 17.5L2 22l4.6-1.5A9 9 0 1 0 17.6 6.3zM12 20a7.1 7.1 0 0 1-3.6-1l-.3-.2-2.7.9.9-2.6-.2-.3A7.1 7.1 0 1 1 12 20zm3.9-5.3c-.2-.1-1.3-.6-1.5-.7s-.3-.1-.5.1-.6.7-.8.9-.3.2-.5.1a5.8 5.8 0 0 1-1.7-1 6.4 6.4 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4.2-.3v-.3c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5a3.2 3.2 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3z"/></svg>
+          Chamar no WhatsApp
+        </a>
+        <a href="tel:+351925279486" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2.2z"/></svg>
+          Ligar Agora (925 279 486)
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">
+          <img src="assets/img/logo.png" alt="JG Desentupimento" class="logo-img">
+        </span>
+        <p>Soluções em desentupimento, serviços de canalização, deteção de fugas de água e inspeção por câmara. Atendimento 24 horas na Região do Algarve.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>SERVIÇOS</h4>
+        <ul>
+          <li><a href="#servico-canalizacao">Serviços de Canalização</a></li>
+          <li><a href="#servico-sanita">Desentupimento de Sanitas</a></li>
+          <li><a href="#servico-cozinha">Desentupimento de Cozinhas</a></li>
+          <li><a href="#servico-fugas">Deteção de Fugas de Água</a></li>
+          <li><a href="#servico-caixas">Caixas e Alta Pressão</a></li>
+          <li><a href="#servico-camera">Inspeção por Câmara</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>INFORMAÇÕES</h4>
+        <ul>
+          <li><a href="#sobre">Sobre a JG</a></li>
+          <li><a href="#como-funciona">Como Funciona</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>CONTACTO</h4>
+        <ul>
+          <li class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Atendimento 24 horas</li>
+          <li class="footer-contact-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 0 0 3.5 17.5L2 22l4.6-1.5A9 9 0 1 0 17.6 6.3z"/></svg><a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20da%20JG%20Desentupimento." target="_blank" rel="noopener">WhatsApp: 924 845 099</a></li>
+          <li class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Região do Algarve, Portugal</li>
+          <li class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2.2z"/></svg><a href="tel:+351925279486">Telefone: 925 279 486</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 JG Desentupimento. Todos os direitos reservados.</span>
+      <span>Desenvolvido para resolver o seu problema.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================== BARRA FIXA MOBILE ============================== -->
+<div class="mobile-cta-bar">
+  <a href="tel:+351925279486" class="call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2.2z"/></svg>
+    Ligar
+  </a>
+  <a href="https://wa.me/351924845099?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20da%20JG%20Desentupimento." class="whatsapp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 0 0 3.5 17.5L2 22l4.6-1.5A9 9 0 1 0 17.6 6.3zM12 20a7.1 7.1 0 0 1-3.6-1l-.3-.2-2.7.9.9-2.6-.2-.3A7.1 7.1 0 1 1 12 20zm3.9-5.3c-.2-.1-1.3-.6-1.5-.7s-.3-.1-.5.1-.6.7-.8.9-.3.2-.5.1a5.8 5.8 0 0 1-1.7-1 6.4 6.4 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4.2-.3v-.3c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5a3.2 3.2 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
