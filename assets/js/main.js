@@ -142,7 +142,6 @@ function initHeroCarousel() {
   const subs = [...hero.querySelectorAll('.hero-sub .hero-line')];
   const dots = [...hero.querySelectorAll('.hero-dot')];
   const status = hero.querySelector('.hero-status');
-  const pauseBtn = hero.querySelector('.hero-pause');
   const viewport = hero.querySelector('.hero-viewport');
   const total = slides.length;
   if (!total) return;
@@ -153,7 +152,6 @@ function initHeroCarousel() {
 
   let index = 0;
   let timer = null;
-  let pausedByUser = reduceMotion.matches;
   let hovering = false;
   let focusInside = false;
 
@@ -169,18 +167,12 @@ function initHeroCarousel() {
     if ('fetchPriority' in img) img.fetchPriority = 'low';
   };
 
-  const setPausedButton = (paused) => {
-    if (!pauseBtn) return;
-    pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
-    pauseBtn.setAttribute('aria-label', paused ? 'Retomar rotação automática' : 'Pausar rotação automática');
-  };
-
   const stop = () => {
     if (timer) clearInterval(timer);
     timer = null;
   };
 
-  const shouldPlay = () => !pausedByUser && !hovering && !focusInside && !reduceMotion.matches && !document.hidden;
+  const shouldPlay = () => !hovering && !focusInside && !reduceMotion.matches && !document.hidden;
 
   const play = () => {
     stop();
@@ -216,24 +208,12 @@ function initHeroCarousel() {
   };
 
   hero.classList.add('is-ready');
-  setPausedButton(pausedByUser);
   ensureImage(0);
   ensureImage(1);
   show(0, false);
 
-  hero.querySelector('.hero-next')?.addEventListener('click', () => show(index + 1, true));
-  hero.querySelector('.hero-prev')?.addEventListener('click', () => show(index - 1, true));
-
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => show(i, true));
-  });
-
-  pauseBtn?.addEventListener('click', () => {
-    pausedByUser = !pausedByUser;
-    hero.classList.toggle('is-paused', pausedByUser);
-    setPausedButton(pausedByUser);
-    if (pausedByUser) stop();
-    else play();
   });
 
   hero.addEventListener('mouseenter', () => {
@@ -258,7 +238,7 @@ function initHeroCarousel() {
   });
 
   hero.addEventListener('keydown', (event) => {
-    if (!event.target.closest('.hero-dot, .hero-arrow, .hero-pause')) return;
+    if (!hero.contains(event.target)) return;
     if (event.key === 'ArrowRight') {
       event.preventDefault();
       show(index + 1, true);
@@ -307,10 +287,7 @@ function initHeroCarousel() {
   });
 
   reduceMotion.addEventListener('change', () => {
-    if (reduceMotion.matches) {
-      pausedByUser = true;
-      stop();
-    }
-    setPausedButton(pausedByUser);
+    if (reduceMotion.matches) stop();
+    else play();
   });
 }

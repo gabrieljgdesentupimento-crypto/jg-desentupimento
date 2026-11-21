@@ -120,7 +120,7 @@
 <main id="inicio">
 
   <!-- ============================== HERO ============================== -->
-  <section class="hero hero-carousel" aria-roledescription="carrossel" aria-label="Destaques da JG Desentupimento no Algarve">
+  <section class="hero hero-carousel" tabindex="0" aria-roledescription="carrossel" aria-label="Destaques da JG Desentupimento no Algarve">
     <div class="hero-viewport">
       <div class="hero-slide is-active" role="group" aria-roledescription="diapositivo" aria-label="1 de 9" data-announce="Diapositivo 1 de 9: Desentupimentos e canalização 24h em todo o Algarve">
         <picture>
@@ -211,9 +211,6 @@
     </div>
 
     <div class="hero-controls">
-      <button type="button" class="hero-arrow hero-prev" aria-label="Diapositivo anterior">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-      </button>
       <div class="hero-dots" role="group" aria-label="Escolher diapositivo">
         <button type="button" class="hero-dot" aria-label="Praia da Rocha, Portimão" aria-current="true"></button>
         <button type="button" class="hero-dot" aria-label="Carrinha da JG Desentupimento" aria-current="false"></button>
@@ -225,13 +222,6 @@
         <button type="button" class="hero-dot" aria-label="Inspeção por câmara de vídeo" aria-current="false"></button>
         <button type="button" class="hero-dot" aria-label="Centro histórico de Tavira" aria-current="false"></button>
       </div>
-      <button type="button" class="hero-arrow hero-next" aria-label="Diapositivo seguinte">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
-      <button type="button" class="hero-pause" aria-pressed="false" aria-label="Pausar rotação automática">
-        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
-        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </button>
     </div>
     <p class="hero-status visually-hidden" aria-live="polite"></p>
   </section>
