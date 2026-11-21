@@ -10,10 +10,10 @@
    PHONE_NUMBER_DISPLAY: formato usado apenas visualmente, se necessário.
    -------------------------------------------------------------------------- */
 const CONTACT_CONFIG = {
-  WHATSAPP_NUMBER: '351900000000',
-  WHATSAPP_MESSAGE: 'Olá! Preciso de ajuda com um problema de desentupimento/hidráulica.',
-  PHONE_NUMBER_TEL: '+351900000000',
-  PHONE_NUMBER_DISPLAY: '+351 900 000 000',
+  WHATSAPP_NUMBER: '351924845099',
+  WHATSAPP_MESSAGE: 'Olá, preciso de um serviço da JG Desentupimento.',
+  PHONE_NUMBER_TEL: '+351924845099',
+  PHONE_NUMBER_DISPLAY: '924 845 099',
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initScrollSpy();
   initHeroCarousel();
+  initLeadForm();
 });
 
 /* Preenche todos os links de WhatsApp e telefone a partir da configuração acima */
@@ -289,5 +290,49 @@ function initHeroCarousel() {
   reduceMotion.addEventListener('change', () => {
     if (reduceMotion.matches) stop();
     else play();
+  });
+}
+
+/* Formulário curto: abre o WhatsApp com o texto já preenchido. A foto anexa-se na conversa. */
+function initLeadForm() {
+  document.querySelectorAll('.js-lead-form').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const nome = String(data.get('nome') || '').trim();
+      const tel = String(data.get('telemovel') || '').trim();
+      const localidade = String(data.get('localidade') || '').trim();
+      const problema = String(data.get('problema') || '').trim();
+      const file = form.querySelector('input[type="file"]')?.files?.[0];
+      const english = form.dataset.lang === 'en';
+      const lines = english
+        ? [
+            'Hello, I need a plumber from JG Desentupimento.',
+            `Name: ${nome}`,
+            `Phone: ${tel}`,
+            `Town: ${localidade}`,
+            `Problem: ${problema}`,
+          ]
+        : [
+            'Olá, preciso de um serviço da JG Desentupimento.',
+            `Nome: ${nome}`,
+            `Telemóvel: ${tel}`,
+            `Localidade: ${localidade}`,
+            `Problema: ${problema}`,
+          ];
+      if (file) {
+        lines.push(english
+          ? 'I will attach a photo in this chat.'
+          : 'Vou anexar uma foto nesta conversa.');
+      }
+      const url = `https://wa.me/351924845099?text=${encodeURIComponent(lines.join('\n'))}`;
+      window.open(url, '_blank', 'noopener');
+      const note = form.querySelector('.js-lead-note');
+      if (note && file) {
+        note.textContent = english
+          ? 'WhatsApp is open with your message. Attach the photo you chose before sending.'
+          : 'O WhatsApp abriu com a mensagem. Anexe a foto que escolheu antes de enviar.';
+      }
+    });
   });
 }
