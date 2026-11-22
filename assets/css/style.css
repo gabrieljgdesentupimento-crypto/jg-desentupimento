@@ -498,6 +498,29 @@ section { padding-block: var(--space-10); }
 .hero-heading .hero-line.is-active,
 .hero-sub .hero-line.is-active { opacity: 1; }
 
+.hero-heading-static,
+.hero-sub-static {
+  height: auto;
+  position: static;
+}
+
+.hero-heading-place {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .btn-green {

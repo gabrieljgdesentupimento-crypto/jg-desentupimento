@@ -327,6 +327,29 @@ function initLeadForm() {
       }
       const url = `https://wa.me/351924845099?text=${encodeURIComponent(lines.join('\n'))}`;
       window.open(url, '_blank', 'noopener');
+      const honey = String(data.get('_honey') || '');
+      const payload = {
+        _subject: 'Novo pedido pelo site JG Desentupimento',
+        _template: 'table',
+        _captcha: 'false',
+        _honey: honey,
+        nome,
+        telemovel: tel,
+        localidade,
+        problema,
+        foto: file ? file.name : '',
+        pagina: window.location.href,
+        idioma: english ? 'en' : 'pt-PT',
+      };
+      fetch('https://formsubmit.co/ajax/gabriel.jgdesentupimento@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      }).catch(() => {});
       const note = form.querySelector('.js-lead-note');
       if (note && file) {
         note.textContent = english
