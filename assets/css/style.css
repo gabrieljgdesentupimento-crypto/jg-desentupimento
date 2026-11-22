@@ -1249,6 +1249,8 @@ section { padding-block: var(--space-10); }
   flex-wrap: wrap;
 }
 
+.footer-bottom a { color: #fff; font-weight: 600; text-decoration: underline; }
+
 /* ==========================================================================
    Barra fixa mobile
    ========================================================================== */
@@ -1267,6 +1269,67 @@ section { padding-block: var(--space-10); }
 @media (max-width: 768px) {
   .mobile-cta-bar { display: flex; }
   body { padding-bottom: var(--mobile-bar-height); }
+}
+
+.wa-float {
+  display: none;
+  position: fixed;
+  z-index: 140;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-green);
+  color: var(--color-white);
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(8, 35, 74, 0.28);
+}
+
+.wa-float svg { width: 30px; height: 30px; }
+
+.wa-float:hover { background: var(--color-green-dark); }
+
+.wa-float:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+@media (min-width: 769px) {
+  .wa-float { display: inline-flex; }
+  .site-footer { padding-bottom: 96px; }
+}
+
+body.has-consent-banner .wa-float {
+  bottom: calc(108px + env(safe-area-inset-bottom));
+}
+
+.consent-banner {
+  position: fixed;
+  z-index: 180;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+  background: var(--color-navy);
+  color: var(--color-white);
+  box-shadow: 0 -8px 24px rgba(8, 35, 74, 0.2);
+}
+
+.consent-banner p { margin: 0; max-width: 760px; font-size: 14.5px; line-height: 1.45; }
+.consent-banner a { color: #fff; font-weight: 700; text-decoration: underline; }
+.consent-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.consent-banner .btn { padding: 12px 18px; }
+.consent-banner .btn-outline { border-color: #fff; color: #fff; }
+
+@media (max-width: 768px) {
+  .consent-banner { bottom: var(--mobile-bar-height); }
 }
 
 .mobile-cta-bar a {
