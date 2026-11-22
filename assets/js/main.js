@@ -10,10 +10,10 @@
    PHONE_NUMBER_DISPLAY: formato usado apenas visualmente, se necessário.
    -------------------------------------------------------------------------- */
 const CONTACT_CONFIG = {
-  WHATSAPP_NUMBER: '351900000000',
-  WHATSAPP_MESSAGE: 'Olá! Preciso de ajuda com um problema de desentupimento/hidráulica.',
-  PHONE_NUMBER_TEL: '+351900000000',
-  PHONE_NUMBER_DISPLAY: '+351 900 000 000',
+  WHATSAPP_NUMBER: '351924845099',
+  WHATSAPP_MESSAGE: 'Olá, preciso de um serviço da JG Desentupimento.',
+  PHONE_NUMBER_TEL: '+351924845099',
+  PHONE_NUMBER_DISPLAY: '924 845 099',
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initFaqAccordion();
   initScrollSpy();
+  initHeroCarousel();
+  initLeadForm();
 });
 
 /* Preenche todos os links de WhatsApp e telefone a partir da configuração acima */
@@ -129,4 +131,265 @@ function initScrollSpy() {
   );
 
   sections.forEach((section) => observer.observe(section));
+}
+
+/* Carrossel do hero: crossfade, pausa e leitura diferida das imagens */
+function initHeroCarousel() {
+  const hero = document.querySelector('.hero-carousel');
+  if (!hero) return;
+
+  const slides = [...hero.querySelectorAll('.hero-slide')];
+  const headings = [...hero.querySelectorAll('.hero-heading .hero-line')];
+  const subs = [...hero.querySelectorAll('.hero-sub .hero-line')];
+  const dots = [...hero.querySelectorAll('.hero-dot')];
+  const status = hero.querySelector('.hero-status');
+  const viewport = hero.querySelector('.hero-viewport');
+  const total = slides.length;
+  if (!total) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const fineHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
+  const INTERVAL = 5000;
+
+  let index = 0;
+  let timer = null;
+  let hovering = false;
+  let focusInside = false;
+  // A cursor already sitting on the hero when the page loads must not count as hover.
+  let hoverArmed = false;
+
+  const mod = (n) => (n + total) % total;
+
+  const imageSource = (img) => (mobileQuery.matches ? img.dataset.srcMobile : img.dataset.srcDesktop);
+
+  const ensureImage = (i) => {
+    const img = slides[mod(i)]?.querySelector('img');
+    if (!img || img.getAttribute('src') || !img.dataset.srcDesktop) return;
+    img.src = imageSource(img);
+    img.decoding = 'async';
+    if ('fetchPriority' in img) img.fetchPriority = 'low';
+  };
+
+  const stop = () => {
+    if (timer) clearInterval(timer);
+    timer = null;
+  };
+
+  const shouldPlay = () => !hovering && !focusInside && !document.hidden;
+
+  const isFinePointer = (event) => {
+    if (!fineHover.matches) return false;
+    const type = event && event.pointerType;
+    return !type || type === 'mouse' || type === 'pen';
+  };
+
+  const focusPauses = (target) => {
+    if (!(target instanceof Element) || !hero.contains(target)) return false;
+    if (target.closest('a, button, input, textarea, select')) return true;
+    return target === hero && target.matches(':focus-visible');
+  };
+
+  const play = () => {
+    stop();
+    if (!shouldPlay()) return;
+    timer = setInterval(() => show(index + 1, false), INTERVAL);
+  };
+
+  const show = (next, manual) => {
+    index = mod(next);
+    ensureImage(index);
+    ensureImage(index + 1);
+
+    slides.forEach((slide, i) => {
+      const on = i === index;
+      slide.classList.toggle('is-active', on);
+      slide.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
+
+    [headings, subs].forEach((group) => {
+      group.forEach((line, i) => {
+        const on = i === index;
+        line.classList.toggle('is-active', on);
+        line.setAttribute('aria-hidden', on ? 'false' : 'true');
+      });
+    });
+
+    dots.forEach((dot, i) => {
+      dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+    });
+
+    if (manual && status) status.textContent = slides[index].dataset.announce || '';
+    play();
+  };
+
+  hero.classList.add('is-ready');
+  ensureImage(0);
+  ensureImage(1);
+  show(0, false);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => show(i, true));
+  });
+
+  hero.addEventListener('pointerenter', (event) => {
+    if (!hoverArmed || !isFinePointer(event)) return;
+    hovering = true;
+    stop();
+  });
+
+  hero.addEventListener('pointerleave', (event) => {
+    if (event.pointerType === 'touch') return;
+    hovering = false;
+    play();
+  });
+
+  // Arm hover-pause on the first real pointer move. A cursor already
+  // resting on the hero at load does not freeze the timer.
+  window.addEventListener('pointermove', (event) => {
+    if (!isFinePointer(event)) return;
+    if (!hoverArmed) {
+      hoverArmed = true;
+      return;
+    }
+    if (hero.contains(event.target)) {
+      hovering = true;
+      stop();
+    }
+  }, { passive: true });
+
+  hero.addEventListener('focusin', (event) => {
+    if (!focusPauses(event.target)) return;
+    focusInside = true;
+    stop();
+  });
+
+  hero.addEventListener('focusout', (event) => {
+    if (focusPauses(event.relatedTarget)) return;
+    focusInside = false;
+    play();
+  });
+
+  hero.addEventListener('keydown', (event) => {
+    if (!hero.contains(event.target)) return;
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      show(index + 1, true);
+    } else if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      show(index - 1, true);
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      show(0, true);
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      show(total - 1, true);
+    }
+  });
+
+  let startX = 0;
+  let startY = 0;
+  let tracking = false;
+
+  const onTouchStart = (event) => {
+    if (event.touches.length !== 1 || event.target.closest('a, button')) {
+      tracking = false;
+      return;
+    }
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+    tracking = true;
+  };
+
+  const onTouchEnd = (event) => {
+    if (!tracking) return;
+    tracking = false;
+    const touch = event.changedTouches[0];
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+    if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+    show(dx < 0 ? index + 1 : index - 1, true);
+  };
+
+  (viewport || hero).addEventListener('touchstart', onTouchStart, { passive: true });
+  (viewport || hero).addEventListener('touchend', onTouchEnd, { passive: true });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stop();
+      return;
+    }
+    hovering = false;
+    play();
+  });
+
+  // Reduced motion only drops the crossfade (see CSS). The slides still advance.
+  reduceMotion.addEventListener('change', () => play());
+}
+
+/* Formulário curto: abre o WhatsApp com o texto já preenchido. A foto anexa-se na conversa. */
+function initLeadForm() {
+  document.querySelectorAll('.js-lead-form').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const nome = String(data.get('nome') || '').trim();
+      const tel = String(data.get('telemovel') || '').trim();
+      const localidade = String(data.get('localidade') || '').trim();
+      const problema = String(data.get('problema') || '').trim();
+      const file = form.querySelector('input[type="file"]')?.files?.[0];
+      const english = form.dataset.lang === 'en';
+      const lines = english
+        ? [
+            'Hello, I need a plumber from JG Desentupimento.',
+            `Name: ${nome}`,
+            `Phone: ${tel}`,
+            `Town: ${localidade}`,
+            `Problem: ${problema}`,
+          ]
+        : [
+            'Olá, preciso de um serviço da JG Desentupimento.',
+            `Nome: ${nome}`,
+            `Telemóvel: ${tel}`,
+            `Localidade: ${localidade}`,
+            `Problema: ${problema}`,
+          ];
+      if (file) {
+        lines.push(english
+          ? 'I will attach a photo in this chat.'
+          : 'Vou anexar uma foto nesta conversa.');
+      }
+      const url = `https://wa.me/351924845099?text=${encodeURIComponent(lines.join('\n'))}`;
+      window.open(url, '_blank', 'noopener');
+      const honey = String(data.get('_honey') || '');
+      const payload = {
+        _subject: 'Novo pedido pelo site JG Desentupimento',
+        _template: 'table',
+        _captcha: 'false',
+        _honey: honey,
+        nome,
+        telemovel: tel,
+        localidade,
+        problema,
+        foto: file ? file.name : '',
+        pagina: window.location.href,
+        idioma: english ? 'en' : 'pt-PT',
+      };
+      fetch('https://formsubmit.co/ajax/gabriel.jgdesentupimento@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      }).catch(() => {});
+      const note = form.querySelector('.js-lead-note');
+      if (note && file) {
+        note.textContent = english
+          ? 'WhatsApp is open with your message. Attach the photo you chose before sending.'
+          : 'O WhatsApp abriu com a mensagem. Anexe a foto que escolheu antes de enviar.';
+      }
+    });
+  });
 }
