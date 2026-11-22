@@ -148,6 +148,7 @@ function initHeroCarousel() {
   if (!total) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const fineHover = window.matchMedia('(hover: hover) and (pointer: fine)');
   const mobileQuery = window.matchMedia('(max-width: 768px)');
   const INTERVAL = 5000;
 
@@ -155,6 +156,8 @@ function initHeroCarousel() {
   let timer = null;
   let hovering = false;
   let focusInside = false;
+  // A cursor already sitting on the hero when the page loads must not count as hover.
+  let hoverArmed = false;
 
   const mod = (n) => (n + total) % total;
 
@@ -173,7 +176,19 @@ function initHeroCarousel() {
     timer = null;
   };
 
-  const shouldPlay = () => !hovering && !focusInside && !reduceMotion.matches && !document.hidden;
+  const shouldPlay = () => !hovering && !focusInside && !document.hidden;
+
+  const isFinePointer = (event) => {
+    if (!fineHover.matches) return false;
+    const type = event && event.pointerType;
+    return !type || type === 'mouse' || type === 'pen';
+  };
+
+  const focusPauses = (target) => {
+    if (!(target instanceof Element) || !hero.contains(target)) return false;
+    if (target.closest('a, button, input, textarea, select')) return true;
+    return target === hero && target.matches(':focus-visible');
+  };
 
   const play = () => {
     stop();
@@ -217,23 +232,40 @@ function initHeroCarousel() {
     dot.addEventListener('click', () => show(i, true));
   });
 
-  hero.addEventListener('mouseenter', () => {
+  hero.addEventListener('pointerenter', (event) => {
+    if (!hoverArmed || !isFinePointer(event)) return;
     hovering = true;
     stop();
   });
 
-  hero.addEventListener('mouseleave', () => {
+  hero.addEventListener('pointerleave', (event) => {
+    if (event.pointerType === 'touch') return;
     hovering = false;
     play();
   });
 
-  hero.addEventListener('focusin', () => {
+  // Arm hover-pause on the first real pointer move. A cursor already
+  // resting on the hero at load does not freeze the timer.
+  window.addEventListener('pointermove', (event) => {
+    if (!isFinePointer(event)) return;
+    if (!hoverArmed) {
+      hoverArmed = true;
+      return;
+    }
+    if (hero.contains(event.target)) {
+      hovering = true;
+      stop();
+    }
+  }, { passive: true });
+
+  hero.addEventListener('focusin', (event) => {
+    if (!focusPauses(event.target)) return;
     focusInside = true;
     stop();
   });
 
   hero.addEventListener('focusout', (event) => {
-    if (hero.contains(event.relatedTarget)) return;
+    if (focusPauses(event.relatedTarget)) return;
     focusInside = false;
     play();
   });
@@ -283,14 +315,16 @@ function initHeroCarousel() {
   (viewport || hero).addEventListener('touchend', onTouchEnd, { passive: true });
 
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stop();
-    else play();
+    if (document.hidden) {
+      stop();
+      return;
+    }
+    hovering = false;
+    play();
   });
 
-  reduceMotion.addEventListener('change', () => {
-    if (reduceMotion.matches) stop();
-    else play();
-  });
+  // Reduced motion only drops the crossfade (see CSS). The slides still advance.
+  reduceMotion.addEventListener('change', () => play());
 }
 
 /* Formulário curto: abre o WhatsApp com o texto já preenchido. A foto anexa-se na conversa. */
