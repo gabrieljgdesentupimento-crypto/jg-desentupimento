@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "jgdesentupimento.vercel.app"
+        }
+      ],
+      "destination": "https://jgdesentupimento.pt/:path*",
+      "permanent": true
+    }
+  ]
+}

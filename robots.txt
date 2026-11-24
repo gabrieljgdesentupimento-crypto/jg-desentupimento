@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jgdesentupimento.vercel.app/sitemap.xml
+Sitemap: https://jgdesentupimento.pt/sitemap.xml
