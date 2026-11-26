@@ -9,6 +9,9 @@ const TRACKING_CONFIG = {
   ADS_CONVERSION_LABEL: '',
 };
 
+/* Link da avaliação no Google. Vazio = o convite fica escondido. */
+const REVIEW_URL = '';
+
 const CONSENT_KEY = 'jg-consent-v1';
 
 (function initTracking() {
@@ -147,6 +150,25 @@ const CONSENT_KEY = 'jg-consent-v1';
       });
     }
   });
+
+  function applyReviewLinks() {
+    const url = (REVIEW_URL || '').trim();
+    document.querySelectorAll('[data-review]').forEach((el) => {
+      el.hidden = !url;
+    });
+    document.querySelectorAll('[data-review-link]').forEach((link) => {
+      if (!url) return;
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.hidden = false;
+    });
+    document.querySelectorAll('[data-review-empty], [data-review-call]').forEach((el) => {
+      el.hidden = Boolean(url);
+    });
+  }
+
+  applyReviewLinks();
 
   document.addEventListener('submit', (event) => {
     const form = event.target;
