@@ -1,10 +1,10 @@
 /* ==========================================================================
-   JG Desentupimento — medição (sem carregar scripts externos por omissão)
-   Preencha os IDs quando existirem. Enquanto estiverem vazios, o gtag.js
-   NÃO é carregado, mesmo que a pessoa aceite os cookies.
+   JG Desentupimento — medição
+   O gtag.js do GA4 carrega em todas as páginas (async). Os cookies de
+   análise só ficam ativos depois do consentimento. Sem ADS_ID, nada de Ads.
    ========================================================================== */
 const TRACKING_CONFIG = {
-  GA4_ID: '',
+  GA4_ID: 'G-LWL9T9SXPH',
   ADS_ID: '',
   ADS_CONVERSION_LABEL: '',
 };
@@ -21,8 +21,6 @@ const CONSENT_KEY = 'jg-consent-v1';
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
 
-  /* Consent Mode v2: tudo negado até haver uma escolha. Isto só escreve no
-     dataLayer; não pede nenhum ficheiro à Google. */
   window.gtag('consent', 'default', {
     ad_storage: 'denied',
     ad_user_data: 'denied',
@@ -34,40 +32,38 @@ const CONSENT_KEY = 'jg-consent-v1';
     wait_for_update: 500,
   });
 
-  function hasMeasurementId() {
-    return Boolean(TRACKING_CONFIG.GA4_ID || TRACKING_CONFIG.ADS_ID);
-  }
-
-  function loadGoogleTags() {
-    if (!hasMeasurementId()) return;
+  function ensureTags() {
     if (window.__jgGtagLoaded) return;
+    const measurementId = TRACKING_CONFIG.GA4_ID || TRACKING_CONFIG.ADS_ID;
+    if (!measurementId) return;
     window.__jgGtagLoaded = true;
 
-    window.gtag('consent', 'update', {
-      ad_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted',
-      analytics_storage: 'granted',
-    });
-
-    const firstId = TRACKING_CONFIG.GA4_ID || TRACKING_CONFIG.ADS_ID;
     const script = document.createElement('script');
     script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(firstId)}`;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
     document.head.appendChild(script);
 
     window.gtag('js', new Date());
     if (TRACKING_CONFIG.GA4_ID) {
-      window.gtag('config', TRACKING_CONFIG.GA4_ID, { anonymize_ip: true });
+      window.gtag('config', TRACKING_CONFIG.GA4_ID);
     }
     if (TRACKING_CONFIG.ADS_ID) {
-      const sendTo = TRACKING_CONFIG.ADS_CONVERSION_LABEL
-        ? `${TRACKING_CONFIG.ADS_ID}/${TRACKING_CONFIG.ADS_CONVERSION_LABEL}`
-        : TRACKING_CONFIG.ADS_ID;
       window.gtag('config', TRACKING_CONFIG.ADS_ID);
-      window.__jgAdsSendTo = sendTo;
     }
   }
+
+  function grantConsent() {
+    const update = {};
+    if (TRACKING_CONFIG.GA4_ID) update.analytics_storage = 'granted';
+    if (TRACKING_CONFIG.ADS_ID) {
+      update.ad_storage = 'granted';
+      update.ad_user_data = 'granted';
+      update.ad_personalization = 'granted';
+    }
+    if (Object.keys(update).length) window.gtag('consent', 'update', update);
+  }
+
+  ensureTags();
 
   function readChoice() {
     try { return localStorage.getItem(CONSENT_KEY); } catch (error) { return null; }
@@ -82,11 +78,11 @@ const CONSENT_KEY = 'jg-consent-v1';
     const banner = document.querySelector('.consent-banner');
     if (banner) banner.remove();
     document.body.classList.remove('has-consent-banner');
-    if (value === 'granted') loadGoogleTags();
+    if (value === 'granted') grantConsent();
   }
 
   if (readChoice() === 'granted') {
-    loadGoogleTags();
+    grantConsent();
   } else if (!readChoice()) {
     mountBanner();
   }
@@ -119,35 +115,39 @@ const CONSENT_KEY = 'jg-consent-v1';
   }
 
   function placeOf(link) {
-    if (link.classList.contains('wa-float')) return 'floating';
-    if (link.closest('.mobile-cta-bar')) return 'mobile-bar';
+    if (link.classList.contains('wa-float')) return 'flutuante';
+    if (link.closest('.mobile-cta-bar')) return 'mobile';
     if (link.closest('header, .site-header')) return 'header';
-    if (link.closest('footer, .site-footer')) return 'footer';
     if (link.closest('.hero, .hero-carousel, .page-hero')) return 'hero';
+    if (link.closest('#contacto, #contact, .lead-form')) return 'contacto';
     if (link.closest('.cta-final')) return 'cta';
+    if (link.closest('footer, .site-footer')) return 'footer';
     const section = link.closest('[id]');
     return section ? section.id : 'page';
+  }
+
+  function isWhatsapp(href) {
+    return href.includes('wa.me') || href.includes('api.whatsapp');
   }
 
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[href]');
     if (!link) return;
     const href = link.getAttribute('href') || '';
+    const shared = {
+      link_url: link.href,
+      page_location: window.location.href,
+      link_location: placeOf(link),
+      transport_type: 'beacon',
+    };
     if (href.startsWith('tel:')) {
-      window.dataLayer.push({
-        event: 'click_call',
+      window.gtag('event', 'click_call', Object.assign({
         phone_number: decodeURIComponent(href.slice(4)),
-        link_location: placeOf(link),
-      });
+      }, shared));
       return;
     }
-    if (href.includes('wa.me')) {
-      window.dataLayer.push({
-        event: 'click_whatsapp',
-        link_url: href,
-        link_text: (link.getAttribute('aria-label') || link.textContent || '').replace(/\s+/g, ' ').trim(),
-        link_location: placeOf(link),
-      });
+    if (isWhatsapp(href)) {
+      window.gtag('event', 'click_whatsapp', shared);
     }
   });
 
