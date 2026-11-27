@@ -1,12 +1,16 @@
 /* ==========================================================================
    JG Desentupimento — medição
-   O gtag.js do GA4 carrega em todas as páginas (async). Os cookies de
-   análise só ficam ativos depois do consentimento. Sem ADS_ID, nada de Ads.
+   O gtag.js carrega uma vez (async) e configura o GA4 e o Google Ads.
+   Cookies de análise e de publicidade só ficam ativos depois do consentimento.
+   ADS_LABEL_CALL e ADS_LABEL_WHATSAPP são os rótulos das ações de conversão
+   do Google Ads. Enquanto estiverem vazios, o clique segue para o Ads no
+   próprio evento (send_to), sem conversão no carregamento da página.
    ========================================================================== */
 const TRACKING_CONFIG = {
   GA4_ID: 'G-LWL9T9SXPH',
-  ADS_ID: '',
-  ADS_CONVERSION_LABEL: '',
+  ADS_ID: 'AW-18597294603',
+  ADS_LABEL_CALL: '',
+  ADS_LABEL_WHATSAPP: '',
 };
 
 /* Link da avaliação no Google. Vazio = o convite fica escondido. */
@@ -95,12 +99,12 @@ const CONSENT_KEY = 'jg-consent-v1';
     banner.setAttribute('aria-live', 'polite');
     banner.setAttribute('aria-label', english ? 'Cookies' : 'Cookies');
     banner.innerHTML = english
-      ? `<p>We use optional analytics cookies only if you accept. The form is used only to reply to your request. <a href="${privacyHref}">Privacy and cookies</a></p>
+      ? `<p>We use optional analytics and advertising cookies only if you accept. The form is used only to reply to your request. <a href="${privacyHref}">Privacy and cookies</a></p>
          <div class="consent-actions">
            <button type="button" class="btn btn-green" data-consent="granted">Accept</button>
            <button type="button" class="btn btn-outline" data-consent="denied">Decline</button>
          </div>`
-      : `<p>Usamos cookies de análise apenas se aceitar. Os dados do formulário servem só para responder ao seu pedido. <a href="${privacyHref}">Política de Privacidade</a></p>
+      : `<p>Usamos cookies de análise e de publicidade apenas se aceitar. Os dados do formulário servem só para responder ao seu pedido. <a href="${privacyHref}">Política de Privacidade</a></p>
          <div class="consent-actions">
            <button type="button" class="btn btn-green" data-consent="granted">Aceitar</button>
            <button type="button" class="btn btn-outline" data-consent="denied">Recusar</button>
@@ -141,15 +145,28 @@ const CONSENT_KEY = 'jg-consent-v1';
       transport_type: 'beacon',
     };
     if (href.startsWith('tel:')) {
-      window.gtag('event', 'click_call', Object.assign({
+      sendClick('click_call', TRACKING_CONFIG.ADS_LABEL_CALL, Object.assign({
         phone_number: decodeURIComponent(href.slice(4)),
       }, shared));
       return;
     }
     if (isWhatsapp(href)) {
-      window.gtag('event', 'click_whatsapp', shared);
+      sendClick('click_whatsapp', TRACKING_CONFIG.ADS_LABEL_WHATSAPP, shared);
     }
   });
+
+  function sendClick(eventName, label, params) {
+    const adsId = (TRACKING_CONFIG.ADS_ID || '').trim();
+    const conversionLabel = (label || '').trim();
+    if (adsId && !conversionLabel) params.send_to = adsId;
+    window.gtag('event', eventName, params);
+    if (adsId && conversionLabel) {
+      window.gtag('event', 'conversion', {
+        send_to: `${adsId}/${conversionLabel}`,
+        transport_type: 'beacon',
+      });
+    }
+  }
 
   function applyReviewLinks() {
     const url = (REVIEW_URL || '').trim();
