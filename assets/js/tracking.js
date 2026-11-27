@@ -158,7 +158,9 @@ const CONSENT_KEY = 'jg-consent-v1';
   function sendClick(eventName, label, params) {
     const adsId = (TRACKING_CONFIG.ADS_ID || '').trim();
     const conversionLabel = (label || '').trim();
-    if (adsId && !conversionLabel) params.send_to = adsId;
+    if (adsId && !conversionLabel) {
+      params.send_to = [TRACKING_CONFIG.GA4_ID, adsId].filter(Boolean);
+    }
     window.gtag('event', eventName, params);
     if (adsId && conversionLabel) {
       window.gtag('event', 'conversion', {
