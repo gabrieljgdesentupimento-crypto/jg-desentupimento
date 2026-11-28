@@ -1793,19 +1793,23 @@ p a.card-link svg { width: 16px; height: 16px; }
   font-size: 14px;
 }
 
-.review-invite a {
-  color: #5c6b7c;
+.review-invite .btn {
+  padding: 8px 14px;
+  font-size: 13px;
   font-weight: 600;
-  text-decoration: underline;
 }
 
-.review-invite a:focus-visible {
-  outline: 3px solid var(--color-blue);
-  outline-offset: 2px;
+.btn-outline-dark {
+  background: transparent;
+  border: 1.5px solid var(--color-navy);
+  color: var(--color-navy);
 }
 
-.site-footer .review-invite a { color: rgba(255, 255, 255, 0.88); }
-.site-footer .review-invite a:focus-visible { outline-color: #fff; }
+.btn-outline-dark:hover { background: rgba(8, 35, 74, 0.06); }
+
+.review-end { padding-block: 8px 36px; }
+
+.site-footer .review-invite .btn-outline:focus-visible { outline-color: #fff; }
 
 .page-review { padding: 40px 0 80px; }
 .page-review h1 { font-size: clamp(32px, 8vw, 44px); margin-bottom: 12px; }

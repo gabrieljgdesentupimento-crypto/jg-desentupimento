@@ -14,7 +14,7 @@ const TRACKING_CONFIG = {
 };
 
 /* Link da avaliação no Google. Vazio = o convite fica escondido. */
-const REVIEW_URL = '';
+const REVIEW_URL = 'https://g.page/r/Cej2g5ejpmgiEBM/review';
 
 const CONSENT_KEY = 'jg-consent-v1';
 
@@ -144,6 +144,15 @@ const CONSENT_KEY = 'jg-consent-v1';
       link_location: placeOf(link),
       transport_type: 'beacon',
     };
+    if (link.hasAttribute('data-review-link')) {
+      window.gtag('event', 'click_review', {
+        send_to: TRACKING_CONFIG.GA4_ID,
+        link_location: placeOf(link),
+        link_url: link.href,
+        transport_type: 'beacon',
+      });
+      return;
+    }
     if (href.startsWith('tel:')) {
       sendClick('click_call', TRACKING_CONFIG.ADS_LABEL_CALL, Object.assign({
         phone_number: decodeURIComponent(href.slice(4)),
@@ -182,7 +191,7 @@ const CONSENT_KEY = 'jg-consent-v1';
       link.rel = 'noopener noreferrer';
       link.hidden = false;
     });
-    document.querySelectorAll('[data-review-empty], [data-review-call]').forEach((el) => {
+    document.querySelectorAll('[data-review-empty]').forEach((el) => {
       el.hidden = Boolean(url);
     });
   }
